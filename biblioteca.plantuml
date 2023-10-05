@@ -1,0 +1,89 @@
+@startuml biblioteca
+class Biblioteca {
+    nome: string
+    telefone: number
+    cod_func: Funcionario
+
+
+}
+class Empresa {
+    cnpj: number
+    nome: string
+    telefone: number
+
+
+}
+class Funcionario {
+    cod_func: number
+    nome: string
+    telefone: number
+    cod_reserva: Reserva
+    cod_emprestimo: Emprestimo
+}
+class Publicacao {
+    cod_publicacao: number
+    nome: string
+    quantidade: number
+    ano: number
+    autor: string
+    editora: string
+
+
+}
+class Livro {
+    isbn: number
+    edicao: number
+
+
+}
+class Revista {
+    issn: number
+    periodicidade: string
+    editora: string
+}
+Class Jornal {
+    issn: number
+    periodicidade: string
+    editora: string
+}
+class Reserva {
+    data: date
+    cod_reserva: number
+    cod_publicacao: number
+    cod_func: number
+    data_retirada: date
+    realizarReserva()
+}
+class Emprestimo {
+    data: date
+    cod_emprestimo: number
+    cod_publicacao: number
+    cod_func: number
+    data_devolucao: dat
+    realizarEmprestimo()
+}
+class Leitor {
+    cod_leitor: number
+    nome: string
+    telefone: number
+    endereco: string
+    data_nascimento: date
+    soliciatarReserva()
+    solicitarEmprestimo()  
+}
+
+Empresa "1,1" *-- "1,n" Biblioteca
+Biblioteca "1,1" *-- "1,n" Publicacao
+Empresa  "1,1" o-- "1,n" Funcionario
+Publicacao  <|-- Livro
+Publicacao  <|-- Revista
+Publicacao <|-- Jornal
+Emprestimo "1,n" *-- "1,1" Publicacao
+Reserva "1,n" *-- "1,1" Publicacao
+Funcionario "1,1" --* "1,n" Reserva
+Funcionario "1,1" --* "1,n" Emprestimo
+Reserva "1,n" o-- "1,n" Leitor
+Emprestimo "1,n" o-- "1,n" Leitor
+
+
+@enduml
