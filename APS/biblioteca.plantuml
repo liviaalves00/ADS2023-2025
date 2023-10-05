@@ -1,0 +1,22 @@
+@startuml biblioteca
+class Biblioteca {}
+class Empresa {}
+class Funcionario {}
+class Publicacao {}
+class Livro {}
+class Revista {}
+Class Jornal {}
+class Reserva {}
+class Emprestimo {}
+
+Empresa "1,1" --o "1,n" Biblioteca
+Publicacao "1,1" --* "1,n" Biblioteca
+Funcionario "1,n" --o "1,1" Empresa
+Livro "1,n" --* "1,1" Publicacao
+Revista "1,n" --* "1,1" Publicacao
+Jornal "1,n" --* "1,1" Publicacao
+Reserva "1,n" --* "1,1" Publicacao
+Funcionario "1,1" --* "1,n" Reserva
+
+
+@enduml
